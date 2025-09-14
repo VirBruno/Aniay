@@ -1,15 +1,9 @@
-# Vetsoft
+# Añay
 
-Aplicación web para veterinarias utilizada en la cursada 2024 de Ingeniería y Calidad de Software. UTN-FRLP 
+Aplicación web para juguetería homónima utilizada en la cursada 2025 de Adminsitración de Recursos. UTN-FRLP 
 
 ## Integrantes del Grupo 
-
-Grupo 13:
-
-- Facundo Larrauri
 - Virginia Bruno
-- María del Pilar Acosta
-- Lucas Martinez
 
 ## Dependencias
 

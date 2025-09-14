@@ -2,12 +2,12 @@
 
 {% block main %}
 <div class="container">
-    <h1 class="mb-4">Animales</h1>
+    <h1 class="mb-4">Proveedor</h1>
 
     <div class="mb-2">
-        <a href="{% url 'pets_form' %}" class="btn btn-primary">
+        <a href="{% url 'proveedores_form' %}" class="btn btn-primary">
             <i class="bi bi-plus"></i>
-            Nuevo Animal
+            Nuevo Proveedor
         </a>
     </div>
 
@@ -15,30 +15,30 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Raza</th>
-                <th>Fecha de nacimiento</th>
-                <th>Peso</th>
-                <th />
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Dirección</th>
+                <th></th>
             </tr>
         </thead>
 
         <tbody>
-            {% for pet in pets %}
+            {% for proveedor in proveedores %}
             <tr>
-                    <td>{{pet.name}}</td>
-                    <td>{{pet.breed}}</td>
-                    <td>{{pet.birthday}}</td>
-                    <td>{{pet.weight}}</td>
+                    <td>{{proveedor.name}}</td>
+                    <td>{{proveedor.phone}}</td>
+                    <td>{{proveedor.email}}</td>
+                    <td>{{proveedor.address}}</td>
                     <td class="d-flex gap-1">
                         <a class="btn btn-outline-primary"
-                           href="{% url 'pets_edit' id=pet.id %}"
+                           href="{% url 'proveedores_edit' id=proveedor.id %}"
                         >Editar</a>
                         <form method="POST"
-                            action="{% url 'pets_delete' %}"
-                            aria-label="Formulario de eliminación de animales">
+                            action="{% url 'proveedores_delete' %}"
+                            aria-label="Formulario de eliminación de proveedor">
                             {% csrf_token %}
 
-                            <input type="hidden" name="pet_id" value="{{ pet.id }}" />
+                            <input type="hidden" name="proveedor_id" value="{{ proveedor.id }}" />
                             <button class="btn btn-outline-danger">Eliminar</button>
                         </form>
                     </td>
@@ -46,7 +46,7 @@
             {% empty %}
                 <tr>
                     <td colspan="5" class="text-center">
-                        No existen animales
+                        No existen proveedor
                     </td>
                 </tr>
             {% endfor %}

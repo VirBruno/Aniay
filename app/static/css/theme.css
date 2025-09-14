@@ -1,0 +1,42 @@
+:root {
+  --aniay-bg: #FDEEEB;
+  --aniay-pink: #D47C7D;
+  --aniay-dark: #2F2F30;
+
+  /* sobrescribir colores Bootstrap */
+  --bs-body-bg: var(--aniay-bg);
+  --bs-body-color: var(--aniay-dark);
+  --bs-primary: var(--aniay-pink);
+}
+
+body {
+  background-color: var(--aniay-bg) !important;
+  color: var(--aniay-dark);
+  font-family: 'Poppins', sans-serif;
+  border-color: #b56566;
+}
+
+.navbar {
+  background-color: var(--aniay-bg) !important;
+  border-bottom: 2px solid var(--aniay-pink);
+}
+
+.navbar .nav-link {
+  color: var(--aniay-dark) !important;
+  border-color: #b56566;
+}
+
+.navbar .nav-link.active {
+  color: var(--aniay-pink) !important;
+  border-color: #b56566;
+}
+
+.btn-primary {
+  background-color: var(--aniay-pink);
+  border-color: var(--aniay-pink);
+}
+
+.btn-primary:hover {
+  background-color: #b56566;
+  border-color: #b56566;
+}

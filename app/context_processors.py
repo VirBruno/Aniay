@@ -2,11 +2,9 @@ from django.urls import reverse
 
 links = [
     {"label": "Home", "href": reverse("home"), "icon": "bi bi-house-door"},
-    {"label": "Clientes", "href": reverse("clients_repo"), "icon": "bi bi-people"},
-    {"label": "Animales", "href": reverse("pets_repo"), "icon": "fas fa-dog"},
-    {"label": "Medicamentes", "href": reverse("medicines_repo"), "icon": "fas fa-pills"},
-    {"label": "Veterinarios", "href": reverse("vets_repo"), "icon": "fas fa-user-md"},
-    {"label": "Productos", "href": reverse("products_repo"), "icon": "fas fa-paw"},
+    {"label": "Proveedores", "href": reverse("proveedores_repo"), "icon": "bi bi-people"},
+    {"label": "Juguetes", "href": reverse("juguetes_repo"), "icon": "bi bi-puzzle"},
+ 
 ]
 
 def navbar(request):
@@ -28,10 +26,8 @@ def home_items(request):
     """ Genera los elementos para mostrar en la página de inicio.
     """
     items = [
-        {"label": "Clientes", "href": reverse("clients_repo"), "icon": "bi bi-people"},
-        {"label": "Animales", "href": reverse("pets_repo"), "icon": "fas fa-dog"},
-        {"label": "Medicamentos", "href": reverse("medicines_repo"), "icon": "fas fa-pills"},
-        {"label": "Veterinarios", "href": reverse("vets_repo"), "icon": "fas fa-user-md"},
-        {"label": "Productos", "href": reverse("products_repo"), "icon": "fas fa-paw"},
+     {"label": "Proveedores", "href": reverse("proveedores_repo"), "icon": "bi bi-people"},
+    {"label": "Juguetes", "href": reverse("juguetes_repo"), "icon": "bi bi-puzzle"},
+    
     ]
     return {"home_items": items}

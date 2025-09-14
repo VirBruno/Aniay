@@ -187,7 +187,7 @@ class Juguete(models.Model):
             brand=juguete_data.get("brand"),
             description=juguete_data.get("description"),
             price=juguete_data.get("price"),
-            image=juguete_date.get("image"),
+            image=juguete_data.get("image"),
         )
 
         return True, None

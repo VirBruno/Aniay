@@ -21,7 +21,7 @@
     {% for juguete in juguetes %}
       {% if juguete.image %}
         <div class="carousel-item {% if forloop.first %}active{% endif %}">
-          <img src="{{ juguete.image.url }}" class="d-block w-100" alt="{{ juguete.nombre }}">
+          <img src="{% static 'img/' %}{{ juguete.imagen }}" alt="Imagen del juguete">
           <div class="carousel-caption d-none d-md-block">
             <h5>{{ juguete.nombre }}</h5>
             <p>${{ juguete.precio }}</p>

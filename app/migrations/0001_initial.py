@@ -30,6 +30,7 @@ class Migration(migrations.Migration):
                 ('brand', models.CharField(max_length=50)),
                 ('description', models.CharField(max_length=100)),
                 ('price', models.IntegerField()),
+                ('image', models.ImageField(blank=True, null=True, upload_to='juguete/')),
                 ('proveedor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='juguetes', to='app.proveedor')),
             ],
         ),

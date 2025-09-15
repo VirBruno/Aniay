@@ -142,7 +142,7 @@ class Juguete(models.Model):
     brand = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to="juguete/", null=True, blank=True)
+    image = models.ImageField(upload_to="juguetes/", null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -151,7 +151,7 @@ class Juguete(models.Model):
     proveedor = models.ForeignKey(
         Proveedor,
         on_delete=models.CASCADE,   # si se borra el proveedor, se borran sus juguetes
-        related_name="juguete"     # así podés acceder con proveedor.juguetes.all()
+        related_name="juguetes"     # así podés acceder con proveedor.juguetes.all()
     )
 
     def __str__(self):

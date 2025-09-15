@@ -9,7 +9,8 @@ def home(request):
     """
     Vista para mostrar la página de inicio.
     """
-    return render(request, "home.html")
+    juguetes = Juguete.objects.all()  # o filtro si querés algunos específicos
+    return render(request, 'home.html', {'juguetes': juguetes})
 
 
 def proveedores_repository(request):

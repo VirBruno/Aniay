@@ -31,7 +31,14 @@
                     <td>{{juguete.description}}</td>
                     <td>{{juguete.price}}</td>
                     <td>{{juguete.proveedor}}</td>
-                    <td>{{juguete.image}}</td>
+                    <td>
+                        {% if juguete.imagen %}
+                            <img src="{{ juguete.imagen.url }}" alt="{{ juguete.nombre }}" width="80">
+                        {% else %}
+                            Sin imagen
+                        {% endif %}
+                        </td>
+
                     <td class="d-flex gap-1">
                         <a class="btn btn-outline-primary"
                            href="{% url 'juguetes_edit' id=juguete.id %}"

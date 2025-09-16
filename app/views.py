@@ -93,7 +93,7 @@ def juguetes_form(request, id=None):
                 description=request.POST["description"],
                 price=request.POST["price"],
                 proveedor=proveedor,
-                image=image
+                image=request.FILES.get("image")
                 
             )
         else:
@@ -103,7 +103,7 @@ def juguetes_form(request, id=None):
             juguete.description = request.POST["description"]
             juguete.price = request.POST["price"]
             juguete.proveedor = proveedor
-            juguete.image=image
+            juguete.image=request.FILES.get("image")
 
         return redirect("juguetes_repo")
 
@@ -133,3 +133,13 @@ def juguetes_delete(request):
     juguete.delete()
 
     return redirect(reverse("juguetes_repo"))
+
+def nuevo_juguete(request):
+    if request.method == 'POST':
+        form = JugueteForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_juguetes')
+    else:
+        form = JugueteForm()
+    return render(request, 'juguetes_form.html', {'form': form})

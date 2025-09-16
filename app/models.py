@@ -142,7 +142,7 @@ class Juguete(models.Model):
     brand = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to="juguetes/", null=True, blank=True)
+    image = models.ImageField(upload_to="app/templates/media/juguetes/", null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -204,7 +204,7 @@ class Juguete(models.Model):
         self.brand = juguete_data.get("brand", "") or self.brand
         self.description = juguete_data.get("description", "") or self.description
         self.price = juguete_data.get("price", "") or self.price
-        self.image = juguete_data.get("price", "") or self.image
+        self.image = juguete_data.get("image", "") or self.image
 
         self.save()
 

@@ -18,7 +18,9 @@
                 aria-label="Formulario de creacion de juguete"
                 method="POST"
                 action="{% url 'juguetes_form' %}"
-                novalidate>
+                enctype="multipart/form-data" 
+                
+                novalidate><!--agregue enctype="multipart/form-data" -->
 
                 {% csrf_token %}
 
@@ -93,17 +95,25 @@
                         </option>
                     {% endfor %}
                 </select>
-                <form method="POST" enctype="multipart/form-data">
+                <!--<<form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <!-- campos existentes -->
+                     campos existentes 
                     <label for="image">Imagen</label>
                     <input type="file" name="image" id="image">
-                    {{ form.as_p }}
                     <br></br>
                     <button class="btn btn-primary" type="submit" form="formpadre">Guardar</button>
-                </form>
-                </div>
-            </form>
+                </form>-->
+                
+
+    <div>
+        <label for="imagen">Imagen</label>
+        <input type="file" name="imagen" id="imagen" class="form-control"/>
+    </div>
+
+    <br>
+    <button class="btn btn-primary" type="submit">Guardar</button>
+</form>
+<button href="{% url 'juguetes_repo' %}" class="btn btn-secondary">Cancelar</button> 
         </div>
     </div>
 </div>

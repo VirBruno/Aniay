@@ -40,3 +40,16 @@ body {
   background-color: #b56566;
   border-color: #b56566;
 }
+
+#carouselJuguetes .carousel-caption h5,
+#carouselJuguetes .carousel-caption p {
+  background-color: var(--aniay-bg) !important;
+  color: var(--aniay-dark);
+  text-shadow: none !important;
+}
+
+#carouselJuguetes .carousel-caption {
+  background-color: rgba(255, 255, 255, 0.6); /* blanco translúcido */
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}

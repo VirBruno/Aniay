@@ -22,15 +22,26 @@
         {% endfor %}
     </div>
     <br>
+<div id="carouselJuguetes" class="carousel slide"  data-bs-ride="carousel">
+  <div class="carousel-inner">
     {% for juguete in juguetes %}
-    <div class="juguete">
-        <h3>{{ juguete.name }}</h3>
-        {% if juguete.image %}
-        <img src="{{ juguete.image.url }}" alt="{{ juguete.name }}">
-        {% else %}
-        <p>Sin imagen</p>
-        {% endif %}
-    </div>
+      {% if juguete.image %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %} align-items-center w-150">
+          <img src="{{ juguete.image.url }}" alt="Imagen del juguete">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>{{ juguete.name }}</h5>
+            <p>${{ juguete.price }}</p>
+          </div>
+        </div>
+      {% endif %}
     {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselJuguetes" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselJuguetes" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
 </div>
 {% endblock %}

@@ -41,15 +41,13 @@ body {
   border-color: #b56566;
 }
 
-#carouselJuguetes .carousel-caption h5,
-#carouselJuguetes .carousel-caption p {
+#carouselJuguetes .carousel-inner h5,
+#carouselJuguetes .carousel-inner p {
   background-color: var(--aniay-bg) !important;
-  color: var(--aniay-dark);
+  color: var(--aniay-dark) !important;
   text-shadow: none !important;
 }
 
-#carouselJuguetes .carousel-caption {
-  background-color: rgba(255, 255, 255, 0.6); /* blanco translúcido */
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
+.carousel-text-dark {
+  color: var(--aniay-dark) !important;
 }

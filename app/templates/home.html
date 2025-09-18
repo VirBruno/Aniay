@@ -1,5 +1,13 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'css/theme.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block main %}
 <div class="container">
     <div class="row">
@@ -22,15 +30,18 @@
         {% endfor %}
     </div>
     <br>
+
 <div id="carouselJuguetes" class="carousel slide"  data-bs-ride="carousel">
   <div class="carousel-inner">
     {% for juguete in juguetes %}
       {% if juguete.image %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %} align-items-center w-150">
-          <img src="{{ juguete.image.url }}" alt="Imagen del juguete">
-          <div class="carousel-caption d-none d-md-block">
-            <h5>{{ juguete.name }}</h5>
-            <p>${{ juguete.price }}</p>
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <div class="d-flex flex-column justify-content-center align-items-center" style="height: 70vh;">
+            <img src="{{ juguete.image.url }}" alt="Imagen del juguete" class="img-fluid mb-3" style="max-height: 300px;">
+            <div class="text-center">
+              <h5 style="color: var(--aniay-dark)">{{ juguete.name }}</h5>
+              <p style="color: var(--aniay-dark)">${{ juguete.price }}</p>
+            </div>
           </div>
         </div>
       {% endif %}

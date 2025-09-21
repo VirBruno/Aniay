@@ -1,0 +1,7 @@
+<h2>Iniciar Sesión</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Ingresar</button>
+</form>
+<a href="{% url 'usuarios_repo' %}" class="btn btn-secondary">Registrar</a>

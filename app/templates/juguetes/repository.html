@@ -32,8 +32,9 @@
                     <td>{{juguete.price}}</td>
                     <td>{{juguete.proveedor}}</td>
                     <td>
-                        {% if juguete.imagen %}
-                            <img src="{{ juguete.image.url }}" alt="{{ juguete.nombre }}" width="80">
+                        {% if juguete.image %}
+                            <td>{{juguete.image.url}}</td>
+                            <!--<img src="{{ juguete.image.url }}" alt="{{ juguete.nombre }}" width="80">-->
                         {% else %}
                             Sin imagen
                         {% endif %}

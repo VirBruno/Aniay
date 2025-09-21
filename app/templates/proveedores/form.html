@@ -18,7 +18,9 @@
                 aria-label="Formulario de creacion de proveedor"
                 method="POST"
                 action="{% url 'proveedores_form' %}"
-                novalidate>
+                enctype="multipart/form-data" 
+                
+                novalidate><!--agregue enctype="multipart/form-data" -->
 
                 {% csrf_token %}
 
@@ -83,10 +85,12 @@
                         La dirrección es opcional
                     </div>
                 </div>
+                <br>
+                <div class="col-lg-6 offset-lg-3">
+                    <button class="btn btn-primary" type="submit">Guardar</button>
+                    <a href="{% url 'proveedores_repo' %}" class="btn btn-secondary">Cancelar</a>
+                </div>
             </form>
-            <br>
-            <button class="btn btn-primary">Guardar</button>
-            <button href="{% url 'proveedores_repo' %}" class="btn btn-secondary">Cancelar</button> 
         </div>
     </div>
 </div>

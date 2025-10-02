@@ -2,7 +2,7 @@ from datetime import date
 
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
-from .models import Proveedor, Juguete, Usuario
+from .models import Proveedor, Juguete
 
 
 def home(request):
@@ -151,57 +151,3 @@ def nuevo_juguete(request):
     else:
         form = JugueteForm()
     return render(request, 'juguetes_form.html', {'form': form})
-
-def usuarios_repository(request):
-    """
-    Vista para mostrar el repositorio de usuarios.
-    """
-    usuarios = Usuario.objects.all()
-    return render(request, "usuarios/repository.html", {"usuarios": usuarios})
-
-
-def usuarios_form(request, id=None):
-    """
-    Vista para mostrar y procesar el formulario de usuario.
-
-    Esta vista maneja la presentación y el procesamiento del formulario de usuario.
-    Si se recibe una solicitud POST, la vista intenta guardar o actualizar el usuario
-    según los datos recibidos. Si se recibe una solicitud GET, la vista muestra el formulario
-    para crear un nuevo usuario o para actualizar uno existente, según el parámetro 'id'.
-    """
-    if request.method == "POST":
-        usuario_id = request.POST.get("id", "")
-        errors = {}
-        saved = True
-
-        if usuario_id == "":
-            saved, errors = Usuario.save_usuario(request.POST)
-        else:
-            usuario = get_object_or_404(Usuario, pk=usuario_id)
-            saved, errors = Usuario.update_usuario(request.POST)
-
-        if saved:
-            return redirect(reverse("usuarios_repo"))
-
-        return render(
-            request, "usuarios/form.html", {"errors": errors, "usuario": request.POST},
-        )
-
-    usuario = None
-    if id is not None:
-        usuario = get_object_or_404(Usuario, pk=id)
-
-    return render(request, "usuarios/form.html", {"usuario": usuario})
-
-
-def usuarios_delete(request):
-    """
-    Vista para eliminar un usuario.
-
-    Esta vista elimina un usuario de la base de datos según el ID proporcionado en la solicitud POST.
-    """
-    usuario_id = request.POST.get("usuario_id")
-    usuario = get_object_or_404(Usuario, pk=int(usuario_id))
-    usuario.delete()
-
-    return redirect(reverse("usuarios_repo"))

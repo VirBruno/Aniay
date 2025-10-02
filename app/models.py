@@ -15,7 +15,7 @@ def validate_fields(data, required_fields):
 
         if field_value == "":
             errors[key] = f"Por favor ingrese un {value}"
-        elif key in ('name', 'user'):
+        elif key in ('name'):
             name_error = validate_aniay_name(field_value)
             if name_error:
                 errors[key] = name_error
@@ -206,57 +206,3 @@ class Juguete(models.Model):
 
         return True, None
 
-
-class Usuario(models.Model):
-    user = models.CharField(max_length=100)
-    phone = models.CharField(max_length=15)
-    email = models.EmailField()
-    address = models.CharField(max_length=100, blank=True)
-
-    def __str__(self):
-        return self.user
-    
-    @staticmethod
-    def get_required_fields():
-        """
-        Devuelve un diccionario que mapea los campos requeridos a sus descripciones en español."""
-        return {
-            "user": "usuario",
-            "email": "email",
-            "phone": "teléfono",
-        }
-
-    @classmethod
-    def save_usuario(cls, usuario_data):
-        """
-        Crea un nuevo cliente utilizando los datos proporcionados"""
-        errors = validate_fields(usuario_data, Usuario.get_required_fields())
-
-        if len(errors.keys()) > 0:
-            return False, errors
-
-        Usuario.objects.create(
-            user=usuario_data.get("user"),
-            phone=usuario_data.get("phone"),
-            email=usuario_data.get("email"),
-            address=usuario_data.get("address"),
-        )
-
-        return True, None
-
-    def update_usuario(self, usuario_data):
-        """
-        Actualiza los datos del cliente con la información proporcionada."""
-        errors = validate_fields(usuario_data, Usuario.get_required_fields())
-
-        if len(errors.keys()) > 0:
-            return False, errors
-
-        self.user = usuario_data.get("user", "") or self.user
-        self.email = usuario_data.get("email", "") or self.email
-        self.phone = usuario_data.get("phone", "") or self.phone
-        self.address = usuario_data.get("address", "")
-
-        self.save()
-
-        return True, None

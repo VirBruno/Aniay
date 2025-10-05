@@ -4,19 +4,16 @@ from django.shortcuts import get_object_or_404, redirect, render, reverse
 
 from .models import Proveedor, Juguete
 
+import requests
+
 
 def home(request):
     """
     Vista para mostrar la página de inicio.
     """
-    juguetes = Juguete.objects.all()
-    if request.user.is_authenticated:
-        if request.user.is_staff:
-            return redirect('proveedores_repo')  # vista admin
-        else:
-            return render(request, 'home.html', {'juguetes': juguetes})  # vista cliente
-    else:
-        return render(request, 'home.html', {'juguetes': juguetes})  # cliente sin login
+    resp = requests.get("http://backend:5000/juguetes")
+    juguetes = resp.json()
+    return render(request, "home.html", {"juguetes": juguetes})    
     """juguetes = Juguete.objects.all()  # o filtro si querés algunos específicos
     return render(request, 'home.html', {'juguetes': juguetes}) CÓDIGO ANTERIOR"""
 

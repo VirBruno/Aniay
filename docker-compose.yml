@@ -1,11 +1,37 @@
-version: '3'
+## CÓDIGO ANTERIOR
+#version: '3'
 
+#services:
+#  web:
+#   container_name: vetsoft
+#    image: vetsoft-app:1.0.0
+#    build: .
+#    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:${CONTAINER_PORT}"
+#    ports:
+#      - "${LOCAL_PORT}:${CONTAINER_PORT}"
+
+
+version: '3'
 services:
-  web:
-    container_name: vetsoft
-    image: vetsoft-app:1.0.0
-    build: .
-    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:${CONTAINER_PORT}"
+  backend:
+    build: ./backend
+    container_name: aniay-backend
     ports:
-      - "${LOCAL_PORT}:${CONTAINER_PORT}"
-    
+      - "8001:8001"
+    networks:
+      - aniay-net
+
+  frontend:
+    build: ./frontend
+    container_name: aniay-frontend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - backend
+    networks:
+      - aniay-net
+
+networks:
+  aniay-net:
+    driver: bridge
+
